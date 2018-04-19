@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> CommonTest</title>
+    <link rel="stylesheet" href="../bootstrap.min.css" />
+    <link rel="stylesheet" href="../../MDL/css/publick.css">
+    <link rel="stylesheet" href="../../MDL/css/marketing.css">
+</head>
+<body>
+    <div class="container body-content">
+        <div id="test" class="form-group">
+           <my-component v-on:show-page="getPageData" v-bind:pager-data="pagerData"></my-component>
+        </div>
+    </div>
+    <script src="../vue.js"></script>
+	<script src="com.js"></script>
+    <script>
+
+        var vue = new Vue({
+            el: "#test",
+			ready:function(){
+				this.getPageData(this.pagerData.page);
+			},
+			methods: {
+				getPageData: function (page) {
+					this.pagerData.page.pagesize = page.pagesize;
+					this.pagerData.page.pageCurrent = page.pageCurrent;
+					this.pagerData.page.pageCount = Math.ceil(this.pagerData.page.totalCount / page.pagesize);// 修改分页信息
+					var newPageInfo = [];
+                    for (var i = 0; i < page.pagesize; i++) {
+					var index =i+(page.pageCurrent-1)*page.pagesize;
+					if(index>this.pagerData.page.totalCount-1)break;
+                        newPageInfo[newPageInfo.length] = this.dataAll[index];
+                    }
+                    this.pagerData.data = newPageInfo; // 修改分页数据
+				}
+			},
+            components: {
+				'my-component': pager
+			},
+			data: {
+				//所有数据，分页数据从这里取
+				dataAll:[],
+				pagerData:{
+					page:{
+						arrPageSize:[25,50,100],
+						pagesize:25,
+						pageCount:25,
+						pageCurrent:1,
+						totalCount:1600,
+						startPage:9
+					}
+					
+				}
+				
+            },
+            
+        });
+        
+    </script>
+</body>
+</html>
