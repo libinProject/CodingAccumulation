@@ -42,7 +42,7 @@
 
 #### 8.查看日志
 
-> git log oneline
+> git log --oneline
 
 #### 9.回退操作
 
