@@ -15,3 +15,7 @@
 - 20180422
 
   >JS ajax 请求loading效果
+
+- 20180425
+
+  > 修改ajax请求loading效果

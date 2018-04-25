@@ -7,9 +7,16 @@ var comFun={
 			this.append(this.popNode);
 		}
 		if(!this.popLoading){
-			this.popLoading=document.createElement('img');
-			this.popLoading.style.cssText="display: none; position: absolute;width:16px;height:16px;";
-			this.popLoading.src='image/loading.gif';
+			//简单loading
+			// this.popLoading=document.createElement('img');
+			// this.popLoading.style.cssText="display: none; position: absolute;width:16px;height:16px;";
+			// this.popLoading.src='image/loading.gif';
+			// this.popLoading.id='poploading'
+			//另一个loading
+			this.popLoading=document.createElement('div');
+			var loading='<div class="loading"><span></span><span></span><span></span><span></span><span></span></div>'
+			this.popLoading.innerHTML=loading;
+			this.popLoading.className = 'table-loading';
 			this.popLoading.id='poploading'
 			this.append(this.popLoading);
 		}
