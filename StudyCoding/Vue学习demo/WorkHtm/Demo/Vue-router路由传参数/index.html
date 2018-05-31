@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../lib/vue.min.js"></script>
+	<script src="../../lib/vue-router.js"></script>
+	<style>
+		.choose{
+			background-color: yellow;
+		}
+		.myrouter-enter,
+		.myrouter-leave-to{
+			opacity: 0;
+			transform: translate(150px)
+		}
+		.myrouter-enter-active,
+		.myrouter-leave-active{
+			transition: all 0.8s ease;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<router-link tag='span' to="/login?id=12&name=libin">登陆</router-link>
+		<router-link to="/regist/13/libin">注册</router-link>
+		<transition name="myrouter" mode="out-in">
+			<router-view></router-view>
+		</transition>
+	</div>
+	<script>
+		var login={
+			template:"<h3>登陆---{{$route.query.id}}----{{$route.query.name}}</h3>",
+			created:function(){
+				console.log(this.$route.query)
+			}
+		}
+		var regist={
+			template:"<h3>注册---{{$route.params.id}}--{{$route.params.name}}</h3>",
+			created:function(){
+				console.log(this.$route)
+			}
+		}
+
+		var routerObj=new VueRouter({
+			routes:[
+				{path:'/login',component:login},
+				{path:"/regist/:id/:name",component:regist},
+				{path:"",redirect:"/login"}
+			],
+			linkActiveClass:"choose"
+		})
+
+		var _vm=new Vue({
+			el:"#app",
+			router:routerObj
+		})
+	</script>
+</body>
+</html>

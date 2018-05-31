@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>index</title>
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <link rel="stylesheet" href="Inc/css/public.css">
+</head>
+
+<body>
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <div class="layui-logo">
+            	<img src="Inc/images/new_shlogo.png" alt="logo">
+            	<div class="change-side-menu">
+					<i class="icon-menushow">&#xe629;</i>
+				</div>
+            </div>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <img src="http://wx.qlogo.cn/mmopen/PiajxSqBRaEJo69VsZ6eT8L3F6utzMko3CiaEHFkTZ42orQmRMgFppVic0ffEv199Dhiaq6J13NgE7tQGTF7GQGphA/0" class="layui-nav-img"> Van
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">基本资料</a></dd>
+                        <dd><a href="javascript:;">注销</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+        <div class="layui-side layui-bg-black" id="menu-side">
+            <div class="layui-side-scroll">
+                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+                <ul class="layui-nav layui-nav-tree">
+                   <li class="layui-nav-item layui-nav-itemed">
+		                <a href="javascript:;">
+		                	<i class="layui-icon">&#xe61d;</i>
+		                    小课堂后台管理
+		                    <span class="layui-nav-more"></span>
+		                </a>
+		                <dl class="layui-nav-child">
+		                    <dd class="">
+		                        <a href="AreaCatelogList.html" target="main">
+		                            <i class="layui-icon">&#xe715;</i>
+		                            区域管理
+		                        </a>
+		                    </dd>
+		                    <dd class="">
+		                        <a href="main.html" target="main">
+		                            <i class="layui-icon">&#xe609;</i>
+		                            城市管理
+		                        </a>
+		                    </dd>
+		                    <dd class="">
+		                        <a href="main.html" target="main">
+		                            <i class="layui-icon">&#xe63c;</i>
+		                            店面管理
+		                        </a>
+		                    </dd>
+		                    <dd class="">
+		                        <a href="main.html" target="main">
+		                            <i class="layui-icon">&#xe630;</i>
+		                            课程模板管理
+		                        </a>
+		                    </dd>
+		                    <dd class="">
+		                        <a href="main.html" target="main">
+		                            <i class="layui-icon">&#xe705;</i>
+		                            课程管理
+		                        </a>
+		                    </dd>
+		                    <dd class="">
+		                        <a href="main.html" target="main">
+		                            <i class="layui-icon">&#xe62c;</i>
+		                            报名统计
+		                        </a>
+		                    </dd>
+		                    <dd class="">
+		                        <a href="main.html" target="main">
+		                            <i class="layui-icon">&#xe629;</i>
+		                            报名详细信息
+		                        </a>
+		                    </dd>
+		                </dl>
+		            </li>
+		            <li class="layui-nav-item">
+		                <a href="javascript:;">
+		                	<i class="layui-icon">&#xe620;</i>
+		                    系统配置
+		                    <span class="layui-nav-more"></span>
+		                </a>
+		                <dl class="layui-nav-child">
+		                    <dd class="">
+		                        <a href="main.html" target="main">
+		                            <i class="layui-icon">&#xe613;</i>
+		                            账号管理
+		                        </a>
+		                    </dd>
+		                </dl>
+		            </li>
+                </ul>
+            </div>
+        </div>
+        <div class="layui-body iframe-container" id="menu-body">
+            <!-- 内容主体区域 -->
+            <iframe class="admin-iframe" id="admin-iframe" name="main" src="main.html"></iframe>
+        </div>
+		<div class="layui-footer footer" id="menu-footer">
+			<p>copyright @libin</p>
+		</div>
+    </div>
+    <script src="layui/layui.js"></script>
+    <script type="text/javascript">
+	layui.use(['layer', 'element'], function(){
+	  var layer = layui.layer,
+	  element = layui.element,
+	  $ = layui.jquery;
+	  
+	  //菜单栏点击效果
+	  $('.left_menu_ul .layui-nav-item').click(function(){
+	    $('.left_menu_ul .layui-nav-item').removeClass('layui-this');
+	    $(this).addClass('layui-this');
+	    $("#iframe-mask").show();
+	    $("#admin-iframe").load(function(){   
+	      $("#iframe-mask").fadeOut(100);
+	    });
+	  });
+
+	  //菜单栏显示或隐藏
+	  $('.change-side-menu').click(function() {
+		  var sideWidth = $('#menu-side').width();
+		  if(sideWidth === 200) {
+		      $('#menu-body').animate({
+		        left: '0'
+		      }); //admin-footer
+		      $('#menu-footer').animate({
+		        left: '0'
+		      });
+		      $('#menu-side').animate({
+		        width: '0'
+		      });
+		  } else {
+		      $('#menu-body').animate({
+		        left: '200px'
+		      });
+		      $('#menu-footer').animate({
+		        left: '200px'
+		      });
+		      $('#menu-side').animate({
+		        width: '200px'
+		      });
+		  }
+		});
+	});
+</script>
+</body>
+
+</html>

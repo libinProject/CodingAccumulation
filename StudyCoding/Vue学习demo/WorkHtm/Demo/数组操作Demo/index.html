@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id='app'>
+
+		<a href='' v-for='item in SearchKeyWords()' v-on:click.prevent='ArrayHaldel(item.id)'>{{item.id}}----数组删除测试</a>
+	</div>
+	<script src="../lib/vue.js"></script>
+	<script>
+		var _vm=new Vue({
+			el:'#app',
+			data:{
+				list:[
+					{id:1,name:'libin'},
+					{id:2,name:'test'},
+					{id:3,name:'demo'}
+				],
+				keyWords:'bin'
+			},
+			methods:{
+				ArrayHaldel:function(id){
+					var self=this;
+
+					var i=self.list.findIndex(function(item){
+						if(item.id==id){
+							return true;
+						}
+					});
+
+					console.log(i)
+
+					//数组查找某元素，然后返回
+					self.list.some(function(item,index){
+						if (item.id==id) {
+							console.log(index);
+							//根据索引删除数组
+							self.list.splice(index, 1)
+							return true;
+						}
+					})
+					console.log(self.list)
+				},
+				SearchKeyWords:function(){
+					var self=this;
+					//数组遍历
+					// var newList=[];
+					// self.list.forEach( function(item) {
+					// 	if(item.name.indexOf(self.keyWords)!=-1){
+					// 		newList.push(item)
+					// 	}
+					// });
+
+					// return newList;
+
+					//数组过滤方法 ES6语法
+					return self.list.filter(function(item){
+						if(item.name.includes(self.keyWords)){
+							return true;
+						}
+					})
+				}
+			}
+		});
+	</script>
+</body>
+</html>

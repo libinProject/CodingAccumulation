@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../lib/vue.min.js"></script>
+	<script src="../../lib/vue-router.js"></script>
+</head>
+<body>
+	<div id="app">
+		<router-link to='/login'>登陆</router-link>
+		<router-link to='/regist'>注册</router-link>
+		<router-view></router-view>
+	</div>
+	<script>
+
+		var login={
+			template:'<h3>登陆页面</h3>'
+		}
+
+		var regist={
+			template:'<h3>注册页面</h3>'
+		}
+
+		var routerObj=new VueRouter({
+			routes:[
+				{
+					path:'/',
+					redirect:'/login'
+				},
+				{
+					path:'/login',
+					component:login
+				},
+				{
+					path:'/regist',
+					component:regist
+				}
+			],
+			linkActiveClass:'myChoose'
+		})
+
+		var _vm=new Vue({
+			el:'#app',
+			data:{},
+			method:{},
+			router:routerObj
+		})
+	</script>
+</body>
+</html>

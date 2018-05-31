@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='../../lib/vue.min.js'></script>
+</head>
+<body>
+	<div id="app">
+		<p>{{ msg }}</p>
+		<login v-bind:parentmsg="msg" v-on:getchildparm="getChildParm"></login>
+	</div>
+
+	<script>
+		var _vm=new Vue({
+			el:'#app',
+			data:{
+				msg:'父组件参数',
+				childMsg:''
+			},
+			created:function(){
+				console.log(111)
+			},
+			methods:{
+				getChildParm:function(data){
+					console.log(data)
+				}
+			},
+			components:{
+				login:{
+					template:'<div><h3>登陆组件---{{ parentmsg }}-- </h3><input type="button" value="传值给父组件" v-on:click="sendData"></div>',
+					props:['parentmsg'],
+					data:function(){
+						return {
+							childMsg:'子组件参数'
+						}
+					},
+					methods:{
+						sendData:function(){
+							var self=this;
+							self.$emit("getchildparm",self.childMsg);
+						}
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>

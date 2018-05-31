@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.red{
+			background-color: red;
+		}
+		.white{
+			background-color: #ccc;
+		}
+		li{
+			list-style-type: none;
+		}
+	</style>
+</head>
+<body>
+	<ul id="colorul">
+		<li>aaa</li>
+		<li>bbb</li>
+		<li>ccc</li>
+		<li>ddd</li>
+		<li>eee</li>
+	</ul>
+	<script>
+		var ulDom=document.querySelector('#colorul');
+		var liDoms=ulDom.querySelectorAll('li');
+		for(var i=0;i<liDoms.length;i++){
+			if(i%2===0)
+				liDoms[i].setAttribute("class", "red")
+			else {
+				liDoms[i].setAttribute('class', 'white')
+			}
+		}
+	</script>
+</body>
+</html>

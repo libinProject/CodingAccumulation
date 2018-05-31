@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>原生JS操作class</title>
+</head>
+<style>
+	.colorRed{
+		color: red;
+	}
+	.colorBlue{
+		color: blue;
+	}
+	.colorGreen{
+		color: green;
+	}
+	.underLine{
+		text-decoration: underline;
+	}
+</style>
+<body>
+	<ul>
+		<li class="red">java</li>
+		<li class="blue colorBlue">html</li>
+		<li class="green">css</li>
+		<li class="black">C#</li>
+	</ul>
+	<input type="button" value="class add" id="add">
+	<input type="button" value="class remove" id="remove">
+	<input type="button" value="class toggle" id="toggle">
+	<input type="button" value="class contain" id="contains">
+
+<script>
+	document.querySelector('#add').addEventListener('click',function(){
+		document.querySelector('.red').classList.add('colorRed');
+	})
+
+	document.querySelector('#remove').addEventListener('click', function(e){
+		document.querySelector('.blue').classList.remove('colorBlue');
+	})
+
+	document.querySelector('#toggle').addEventListener('click',function(){
+		document.querySelector('.green').classList.toggle('colorGreen');
+	})
+
+	document.querySelector('#contains').addEventListener('click', function(){
+		var isContain=document.querySelector('.black').classList.contains('black');
+		console.log(isContain)
+	})
+</script>
+</body> 
+</html>

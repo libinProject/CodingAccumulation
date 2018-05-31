@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>兄弟节点</title>
+</head>
+<style>
+	span{
+		color: red;
+	}
+</style>
+<body>
+	username:<input type="text" name="username" id="username"><span></span><br />
+	password:<input type="text" name="password" id="password"><br />
+	<input type="button" id="btn" value="提交">
+	<script>
+		document.querySelector('#username').onkeyup=function(){
+			if(this.value.length<3||this.value.length>6){
+				//this.nextSibling.innerHTML='error'
+				this.nextElementSibling.innerHTML='error'
+			}else {
+				this.nextElementSibling.innerHTML=''
+			}
+		}
+	</script>
+</body>
+</html>

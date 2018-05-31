@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../lib/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="button" value="获取dom" ref="myinput" v-on:click="getElement">
+		<h3 ref='myh'>标签节点</h3>
+		<login ref="mylogin"></login>
+	</div>
+	<script>
+		var _vm=new Vue({
+			el:"#app",
+			data:{},
+			methods:{
+				getElement:function(){
+					var self=this;
+					console.log(self.$refs.mylogin.msg)
+				}
+			},
+			components:{
+				login:{
+					data:function(){
+						return {
+							msg:"子组件数据"
+						}
+					},
+					template:'<h4>登陆组件</h4>'
+				}
+			}
+		})
+	</script>
+</body>
+</html>

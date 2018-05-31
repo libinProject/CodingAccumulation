@@ -1,0 +1,126 @@
+/* login */
+.layui-canvs{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: -1;
+}
+.layui-layout-login{
+    width:350px;
+    height:auto;
+    overflow:hidden;
+    margin:10% auto 0 auto;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    box-shadow:0 -15px 30px #0d957a;
+    border-radius:5px;
+    z-index: 1000;
+}
+.layui-layout-login h1{
+	font-size:25px;
+	font-weight:bold;
+	text-align:center;
+	color:#45bda6;
+	text-shadow:0 0 1px #0e947a;
+	margin-bottom:15px;
+}
+.layui-layout-login .miniclass-login{
+	margin:10px 0;
+	height:42px;
+	overflow:hidden;
+	position:relative;
+	display: flex;
+}
+.miniclass-login .login_txtbx{
+	font-size:14px;
+	height:26px;
+	line-height:26px;
+	padding:8px 5%;
+	width:90%;
+	text-indent:2em;
+	border:none;
+	background:#5cbdaa;
+	color:white;
+	border-radius:5px;
+}
+.miniclass-login  .login_txtbx::-webkit-input-placeholder {
+	color:#f4f4f4;
+	line-height:inherit;
+} 
+.miniclass-login  .login_txtbx:-moz-placeholder {
+	color:#f4f4f4;
+	line-height:inherit;
+} 
+.miniclass-login  .login_txtbx::-moz-placeholder {
+	color:#f4f4f4;
+	line-height:inherit;
+}
+.miniclass-login  .login_txtbx:focus{
+	background:#55b7a4;
+}
+.layui-userpwd-icon{
+	font-family:'iconfont';
+	position:absolute;
+	top:0;
+	left:10px;
+	height:42px;
+	line-height:42px;
+	font-size:20px;
+	color:#0c9076;
+}
+.layui-submit .submit_btn{
+	width:30%;
+	height:42px;
+	border:none;
+	font-size:16px;
+	background:#428bca;
+	color:#f8f8f8;
+	cursor: pointer;
+	flex:1;
+	border-radius:5px;
+}
+.submit_btn:hover{
+	background:#009688;
+	color:#f4f4f4;
+}
+.miniclass-login .ace{
+	opacity: 0;
+  	position: absolute;
+  	z-index: 1;
+  	width: 30px;
+  	height: 30px;
+  	cursor: pointer;
+}
+input[type=checkbox].ace + .lbl{
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  line-height: 30px;
+  min-height: 30px;
+  min-width: 30px;
+  font-weight: normal;
+  cursor: pointer;
+}
+input[type=checkbox].ace + .lbl::before{
+  cursor: pointer;
+  font-family: 'iconfont';
+  font-weight: normal;
+  font-size: 28px;
+  color: #0d957a;
+  content: "\e93b";
+  border-radius: 0;
+  display: inline-block;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  min-width: 30px;
+  margin-right: 1px;
+  position: relative;
+  top: 3px;
+}
+input[type=checkbox].ace:checked + .lbl::before{
+  display: inline-block;
+  content: '\e93a';
+}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>许愿墙Demo</title>
+	<style>
+		body {
+            margin: 0 auto;
+            padding: 0px;
+            font-size: 12px;
+            background: url(images/bg.gif) repeat center 36px;
+            text-align: center;
+            background-color: #c30230;
+        }
+        #content {
+            margin: 0 auto;
+            width: 960px;
+            background: url(images/content_bg.jpg) no-repeat left 30px;
+            height: 627px;
+            position: relative;
+        }
+        #content .tips {
+            position: absolute;
+            width: 227px;
+            left: 200px;
+            top: 100px;
+        }
+        #content .tips .tip_h {
+            background: url(images/tip1_h.gif) no-repeat left top;
+        }
+
+        #content .tips .tip_h {
+            width: 227px;
+            padding-top: 45px;
+            height: 23px;
+            text-align: left;
+            cursor: move;
+        }
+        #content .tips .tip_c {
+            background: url(images/tip1_c.gif) repeat-y;
+        }
+
+        #content .tips .tip_c{
+            width: 200px;
+            padding-left: 12px;
+            padding-right: 15px;
+            min-height: 40px;
+            text-align: left;
+            line-height: 20px;
+            max-height: 160px;
+            word-wrap: break-word;
+            word-break: break-all;
+            overflow: hidden;
+        }
+
+        #content .tips .tip_f {
+            background: url(images/tip1_f.gif) no-repeat left top;
+        }
+
+        #content .tips .tip_f{
+            width: 227px;
+            height: 53px;
+            padding-top: 20px;
+        }
+        #content .close {
+            float: left;
+            font-size: 12px;
+            cursor: pointer;
+            color: #000000;
+        }
+        .clr {
+            clear: both;
+            overflow: auto;
+            display: block;
+            height: 0px;
+        }
+        #content .icon {
+            float: left;
+            width: 35px;
+            padding-left: 15px;
+            height: 35px;
+            text-align: center;
+        }
+        #content .name {
+            float: right;
+            padding-right: 15px;
+            text-align: right;
+            font-size: 14px;
+            line-height: 35px;
+            color: #C0F;
+        }
+        #content .num {
+            float: left;
+            padding-left: 7px;
+            width: 195px;
+        }
+	</style>
+</head>
+<body>
+	<div id="content">
+		<!-- <div class="tips">
+			<div class="tip_h" title="双击关闭纸条">
+				<div class="num">第[49568]条 2016-02-18 12:40:00</div>
+				<div class="close" title="关闭纸条" >×</div>
+				<div class="clr"></div>
+			</div>
+			<div class="tip_c">
+				常要说的事儿是乐生于苦
+			</div>
+			<div class="tip_f">
+				<div class="icon">
+					<img src="images/bpic_1.gif" alt="" title="">
+				</div>
+				<div class="name">西伯利亚狼</div>
+				<div class="clr"></div>
+			</div>
+		</div> -->
+	</div>
+	<script>
+		var zIndex = 0;
+		var content=document.querySelector('#content')
+		for(var i=0;i<10;i++){
+			var newDiv=document.createElement('div');
+			newDiv.className='tips';
+			newDiv.id='tip_'+i;
+			var topValue = parseInt(Math.random()*350);
+	        var leftValue = parseInt(Math.random()*550);
+	        newDiv.style.top = topValue+"px";
+	        newDiv.style.left = leftValue+"px";
+	        newDiv.innerHTML='<div class="tips"><div class="tip_h" title="双击关闭纸条">'
+					+'<div class="num">第[49568]条 2016-02-18 12:40:00</div>'
+					+'<div class="close" title="关闭纸条" >×</div>'
+					+'<div class="clr"></div>'
+				+'</div>'
+				+'<div class="tip_c">'
+					+'常要说的事儿是乐生于苦'
+				+'</div>'
+				+'<div class="tip_f">'
+					+'<div class="icon">'
+						+'<img src="images/bpic_1.gif" alt="" title="">'
+					+'</div>'
+					+'<div class="name">西伯利亚狼1</div>'
+					+'<div class="clr"></div>'
+				  +'</div>'
+				+'</div>';
+			content.appendChild(newDiv)
+		}
+		var tips=content.querySelectorAll('.tips');
+		for(var i=0;i<tips.length;i++){
+			tips[i].onclick=function(e){
+				var obj=e.target;
+				if (obj) {
+					console.log('1')
+					if (obj.getAttribute("class")==="close") {
+						console.log('2')
+						console.log('close'+i)
+						content.removeChild(this)
+					}else {
+						console.log('3');
+						zIndex++;
+						this.style.zIndex=zIndex;	
+					}
+				}
+			}
+		}
+	</script>
+</body>
+</html>

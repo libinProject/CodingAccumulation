@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>登陆</title>
+	<link rel="stylesheet" href="Inc/css/public.css">
+	<link rel="stylesheet" href="Inc/css/login.css">
+</head>
+<body>
+	<div class="layui-canvs"></div>
+	<div class="layui-layout layui-layout-login">
+		<!-- <div class="miniclass-login" style="height: 60px;justify-content: center;">
+			<img src="Inc/images/loginlogo.jpg" style="width: 290px;height: 60px;">
+		</div> -->
+		<div class="miniclass-login">
+			 <i class="layui-userpwd-icon">&#xe623;</i>
+			 <input type="text" placeholder="账号" class="login_txtbx"/>
+		</div>
+		<div class="miniclass-login">
+			 <i class="layui-userpwd-icon">&#xe66c;</i>
+			 <input type="password" placeholder="密码" class="login_txtbx"/>
+		</div>
+		<div class="miniclass-login" style="color: white;height: 30px;">
+			<input type="checkbox" class="ace" id="chkyinsi" onclick="CheckYinSi(this)">
+            <span class="lbl">我同意隐私声明</span> 
+		</div>
+	    <div class="layui-submit miniclass-login">
+	    	<input type="button" value="登陆" class="submit_btn login_btn"/>
+	    	<input type="button" value="取消" class="submit_btn reset_btn" style="margin-left: 10px; background-color: #abbac3;"/>
+	    </div>
+	</div>
+	<div id="mask" style="background-color: black; opacity: 0.2; position: absolute;top:0;left:0;width:100%;height:100%;z-index: 100; display: none">
+    </div>
+    <div id="dlgmsg" style="width: 400px; position: absolute;height: 300px; background-size: 100%; display: none; z-index: 110;background-color:white">
+        <div style="font-size:22px;font-weight:bold;padding-left:30px; padding-top:20px">
+            隐私声明
+        </div>
+        <hr style="border:solid;margin-top:0px"/>
+        <div style="font-size:14px;font-weight:bold;padding-left:25px;padding-right:25px">
+            本公司已明确知晓并同意遵守微软公司对于终端用户信息的保密要求和隐私政策，会严格基于所获取的终端用户的许可使用本系统上的用户个人信息。如有违反，由本公司承担相关法律责任和由此给微软公司造成的损失。
+        </div>
+        <div style="height:40px;margin-top:55px;padding-right:30px;display: flex;justify-content: flex-end;">
+            <button type="button" style="background:#428bca;color:#f8f8f8;cursor: pointer;border:0;width: 100px;" onclick="$('#dlgmsg').hide();$('#mask').hide();">
+                <span class="bigger-110">确认</span>
+            </button>
+        </div>
+    </div>
+	<script src="layui/jquery.min.js"></script>
+	<script src="layui/jparticle.jquery.js"></script>
+	<script>
+		$(function(){
+			$(".layui-canvs").width($(window).width());
+   			$(".layui-canvs").height($(window).height());
+			$(".layui-canvs").jParticle({
+				background: "#141414",
+				color: "#E6E6E6"
+			});
+		});
+		$(".login_btn").click(function(){
+		  location.href="index.html";
+		});
+	</script>
+	<script>
+		function CheckYinSi(item){
+	        if (item.checked == true){
+	            $("#mask").show();
+	            $("#dlgmsg").show();
+	            //debugger;
+	            var height = $(window).height();
+	            var width = $(window).width();
+	            $("#dlgmsg").css("top", (height / 2) - 175);
+	            $("#dlgmsg").css("left", (width / 2) - 250);
+	        }        
+	    }
+	</script>
+</body>
+</html>

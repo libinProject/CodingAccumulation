@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> CommonTest</title>
+    <link rel="stylesheet" href="../bootstrap.min.css" />
+</head>
+<body>
+    <div class="container body-content">
+        <div id="test" class="form-group">
+           <my-component v-bind:pager-data="pagerData"></my-component>
+        </div>
+        <hr />
+        <footer>
+            <p>&copy; 2016 - 易兒善</p>
+        </footer>
+    </div>
+    <script src="../vue.js"></script>
+	<script src="com.js"></script>
+    <script>
+		//模拟获取数据
+        var getData=function(){
+			var result = [];
+			for (var i = 0; i < 502; i++) {
+				result[i] ={name:'test'+i,id:i,age:(Math.random()*100).toFixed()};
+				}
+			return result;
+		}
+
+        var vue = new Vue({
+            el: "#test",
+			ready:function(){
+				this.pagerData.data = getData();
+			},
+            components: {
+				'my-component': pager
+			},
+			data: {
+				pagerData:{
+					data:[],
+					rows:[{label:"ID",name:"id"},
+					{label:"名字",name:"name"},
+					{label:"年龄",name:"age"}
+					],
+					
+					
+				}
+				
+            },
+            
+        });
+        
+    </script>
+</body>
+</html>

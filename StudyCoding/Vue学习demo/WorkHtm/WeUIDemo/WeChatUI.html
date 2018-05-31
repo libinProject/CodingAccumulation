@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>WeChatUI</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+	<link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/0.4.3/weui.min.css" />
+</head>
+<body>
+	<div style="padding-top:100px;">
+		<input type="button" class="weui_btn weui_btn_primary" onclick="globleFun.toast('loading',1,'加载中')" value="Toast 加载中">
+		<input type="button" class="weui_btn weui_btn_primary" onclick="globleFun.toast('toast',1,'完成')" value="Toast 完成">
+		<input type="button" class="weui_btn weui_btn_warn" onclick="globleFun.error('system error')" value="Error">
+		<input type="button" class="weui_btn weui_btn_primary" onclick="globleFun.confirm('确定取消吗？',function(){console.log(1)})" value="Confirm">
+		<input type="button" class="weui_btn weui_btn_primary" onclick="globleFun.alert('简单提示框')" value="Alert">
+	</div>
+	<div class="weui-mask"></div>
+	
+	<script src="Inc/js/public.js"></script>
+</body>
+</html>

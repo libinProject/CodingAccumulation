@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.red{
+			background-color: red;
+		}
+		.white{
+			background-color: #ccc;
+		}
+		li{
+			list-style-type: none;
+		}
+	</style>
+</head>
+<body>
+	<ul id="colorul">
+		<li>aaa</li>
+		<li>bbb</li>
+		<li>ccc</li>
+		<li>ddd</li>
+		<li>eee</li>
+	</ul>
+	<script>
+		var ulDom=document.querySelector('#colorul');
+		console.log(ulDom.childNodes)
+		console.log(ulDom.children);
+		var childs=ulDom.childNodes;
+		for(var i=0;i<childs.length;i++){
+			//nodeType:1 元素节点 3：文本节点 8：注释节点 2：属性节点
+			console.log("nodeType---节点类型："+childs[i].nodeType);
+			console.log("nodeValue---节点值："+childs[i].nodeValue);
+			console.log("nodeName---节点名称："+childs[i].nodeName);
+		}
+
+	</script>
+</body>
+</html>

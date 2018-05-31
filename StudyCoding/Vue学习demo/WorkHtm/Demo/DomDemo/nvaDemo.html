@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.nav{
+			display: flex;
+		}
+		.current{
+			background-color: red;
+		}
+		.head{
+			list-style-type: none;
+			width: 80px;
+			margin: 5px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<ul class="nav">
+		<li class="head current"><a href="javascript:void(0)">首页</a></li>
+		<li class="head"><a href="javascript:void(0)">新闻</a></li>
+		<li class="head"><a href="javascript:void(0)">视频</a></li>
+		<li class="head"><a href="javascript:void(0)">经销商</a></li>
+		<li class="head"><a href="javascript:void(0)">个人介绍</a></li>
+	</ul>
+	<script>
+		var ulDom=document.querySelector('.nav');
+		var nodes=ulDom.childNodes;
+		for(var i=0;i<nodes.length;i++){
+			var node=nodes[i];
+			if(node.nodeType!=1){
+				continue;
+			}
+			node.onclick=function(e){
+				if(e.target.parentNode.nodeName.toLowerCase()!=='li'){
+					return;
+				}
+				for(var j=0;j<nodes.length;j++){
+					var tempNode=nodes[j];
+					if(tempNode.nodeType===1){
+						tempNode.classList.remove("current");
+					}
+				}
+				e.target.parentNode.classList.add("current");
+			}
+		}
+	</script>
+</body>
+</html>

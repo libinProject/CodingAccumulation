@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="renderer" content="webkit">
+	<title>Document</title>
+	<link rel="stylesheet" href="../../lib/bootstrap-3.3.7/css/bootstrap.min.css">
+	<script src="../lib/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<my-cmt v-on:add-commont="addCommont"></my-cmt>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>发表人</th>
+					<th>发表内容</th>
+					<th>发表时间</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr v-for="item in cmtsList">
+					<td>{{item.id}}</td>
+					<td>{{item.user}}</td>
+					<td>{{item.content}}</td>
+					<td>{{item.dateStr | dateFilter}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<template id="tmpl">
+		<div>
+			<div class="form-group">
+				<label for="username">发表人：</label>
+				<input type="text" class="form-control" id="username" v-model="cmtName">
+			</div>
+			<div class="form-group">
+				<label>发表内容：</label>
+				<textarea class="form-control" v-model="cmtContent" v-focus></textarea>
+			</div>
+			<button type="button" class="btn btn-primary" v-on:click="secretAdd">发表</button>
+		</div>
+	</template>
+	<script>
+		var cmtModel={
+			template:"#tmpl",
+			data:function(){
+				return {
+					cmtName:'',
+					cmtContent:''
+				}
+			},
+			methods:{
+				secretAdd:function(){
+					var self=this;
+					var model={
+						id:Date.now(),
+						user:self.cmtName,
+						content:self.cmtContent,
+						dateStr:new Date()
+					}
+					this.$emit("add-commont",model)
+				}
+			},
+			directives:{
+				focus:{
+					bind:function(el){
+						el.focus();
+					},
+					inserted:function(el){
+						el.focus();
+					}
+				}
+			}
+		}
+		var _vm=new Vue({
+			el:"#app",
+			data:{
+				cmtsList:[
+					{id:Date.now(),user:"libin1",content:'测试评论1',dateStr:new Date()},
+					{id:Date.now(),user:"libin2",content:'测试评论2',dateStr:new Date()},
+					{id:Date.now(),user:"libin3",content:'测试评论3',dateStr:new Date()},
+					{id:Date.now(),user:"libin4",content:'测试评论4',dateStr:new Date()},
+					{id:Date.now(),user:"libin5",content:'测试评论5',dateStr:new Date()}
+				]
+			},
+			methods:{
+				addCommont:function(cmtModel){
+					var self=this;
+					self.cmtsList.push(cmtModel)
+				}
+			},
+			components:{
+				"my-cmt":cmtModel
+			},
+			filters:{
+				dateFilter:function(data){
+					var dt=new Date(data);
+					var year=dt.getFullYear();
+					var month=(dt.getMonth()+1).toString().padStart(2,'0');
+					var day=dt.getDate().toString().padStart(2,'0');
+
+					var hour=dt.getHours().toString().padStart(2,'0');
+					var mints=dt.getMinutes().toString().padStart(2,'0');
+					var seconds=dt.getSeconds().toString().padStart(2,'0');
+
+					return `${year}-${month}-${day} ${hour}:${mints}:${seconds}`
+				}
+			}
+		})
+	</script>
+</body>
+</html>

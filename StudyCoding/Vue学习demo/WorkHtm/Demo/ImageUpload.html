@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>
+            Document
+        </title>
+    </head>
+    <body>
+        <input type="file" class="file-but" id="uploadImg" data-url="http://hk01.dev.socialhubplus.com/facecheck/FaceRecognition.ashx"/>
+        <input type="hidden" name="ImgFile" id="ImgFile" value=""/>
+        <img id="upload-img" src="" alt=""/>
+    </body>
+    <script>
+    var uploadImg = document.querySelector('#uploadImg'),
+        uploadImgSrc = document.querySelector('#upload-img'),
+        mimeTypes = {
+            '.jpg': 'image/jpeg',
+            '.jpeg': 'image/jpeg',
+            '.png': 'image/png',
+            '.gif': 'image/gif'
+        };
+    
+    // 图片上传
+    function uploadFile(e) {
+        var target = e.target,
+        file = target.files[0],
+        reader = new FileReader(),
+        formData = new FormData(),
+        fileType = file.type;
+        if (!fileType) {
+            var regexp = fileName.match(/\.\w+$/);
+            if (regexp && (regexp = regexp[0]))
+                fileType = mimeTypes[(regexp + '').toLowerCase()];
+        };
+        if (fileType.indexOf('image') < 0 || file.size > 8388608) {  // 文件类型不符合
+            alert('\u60A8\u9009\u62E9\u7684\u6587\u4EF6\u7C7B\u578B\u8D85\u51FA\u8303\u56F4')
+            return;
+        };
+        reader.onload = function() {
+         uploadImgSrc.src = this.result;
+        };
+        reader.readAsDataURL(file);
+        formData.append("file", file);
+        uploadFile.xhr = new XMLHttpRequest(), formData = new FormData();
+        formData.append('file', file);
+        uploadFile.xhr.addEventListener('load', function() {
+            //document.querySelector("#ImgFile").value = JSON.parse(this.responseText)[0].imgsrc;
+            alert(JSON.parse(this.responseText).imgUrl)
+        });
+        uploadFile.xhr.open('POST', uploadImg.dataset['url'], true);
+        uploadFile.xhr.send(formData);
+    };
+    uploadImg.addEventListener('change', uploadFile);
+        
+    </script>
+</html>

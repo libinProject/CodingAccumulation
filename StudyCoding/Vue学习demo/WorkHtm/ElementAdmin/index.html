@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ElementDemo</title>
+	<link rel="stylesheet" href="../lib/element/index.css">
+</head>
+<body>
+	<div id="app">
+	    <el-button @click="visible = true">Button</el-button>
+	    <el-dialog :visible.sync="visible" title="Hello world">
+	      <p>Try Element</p>
+	    </el-dialog>
+  </div>
+  <script src="../lib/vue.js"></script>
+  <script src="../lib/element/index.js"></script>
+   <script>
+    new Vue({
+      el: '#app',
+      data: function() {
+        return { visible: false }
+      }
+    })
+  </script>
+</body>
+</html>

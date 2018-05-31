@@ -1,0 +1,91 @@
+
+@font-face {
+  font-family: 'iconfont';  /* project id 546892 */
+  src: url('https://at.alicdn.com/t/font_546892_42bksfnhegjpp66r.eot');
+  src: url('https://at.alicdn.com/t/font_546892_42bksfnhegjpp66r.eot?#iefix') format('embedded-opentype'),
+  url('https://at.alicdn.com/t/font_546892_42bksfnhegjpp66r.woff') format('woff'),
+  url('https://at.alicdn.com/t/font_546892_42bksfnhegjpp66r.ttf') format('truetype'),
+  url('https://at.alicdn.com/t/font_546892_42bksfnhegjpp66r.svg#iconfont') format('svg');
+}
+
+.icon-menushow{
+	font-family:"iconfont" !important;
+    font-size:16px;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+    color:white;
+}
+
+.admin-iframe {
+    position: absolute;
+    border: 0;
+    width: 100%;
+    height: 100%
+}
+// 切换菜单栏样式
+.change-side-menu{
+	position: absolute; 
+	cursor: pointer;
+    z-index: 19940201;
+    left: 200px;
+    color: white;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    top: 23%;
+}
+.change-side-menu:hover{
+	cursor: pointer;
+}
+/* 头部左侧 */
+.change-side-menu{
+	width: auto;
+	height: 57px;
+	position: absolute;
+	left: 245px;
+	top: 0px;
+}
+.footer{
+	text-align:center;
+}
+.time-main{
+	padding: 20px;
+}
+.head-title{
+	height: 50px;
+	border-bottom: 1px solid #EEEFF1;
+	padding:0 20px;
+	padding-left: 30px;
+	margin-bottom: 30px;
+}
+.head-title span{
+	line-height: 50px;
+	font-size: 14px;
+	color: #858585;
+	font-weight: 300;
+}
+/*修改图片*/
+.icon-font-edit:before{
+  cursor: pointer;
+  font-family: 'iconfont';
+  font-weight: normal;
+  font-size: 14px;
+  content:"\e685";
+}
+/*删除图片*/
+.icon-font-del:before{
+  cursor: pointer;
+  font-family: 'iconfont';
+  font-weight: normal;
+  font-size: 14px;
+  content:"\e60d";
+}
+/*信息添加DIV*/
+.info-Add{
+  overflow-x:hidden;
+  padding: 0px;
+  margin: 20px;
+}
