@@ -165,16 +165,44 @@
 
 #### 6.webpack 第三方相关loader
 
->| 文件类型 | loader                                  |
->| ---- | --------------------------------------- |
->| css  | style-loader，css-loader                 |
->| less | style-loader，css-loader，less-loader     |
->| sass | style-loader，css-loader，scss-loader     |
->| 图片   | url-loader?limit=7421&name=[name].[ext] |
->| Vue  | vue-loader，vue-template-compiler        |
->|      |                                         |
+>| 文件类型  | loader                                   |
+>| ----- | ---------------------------------------- |
+>| css   | style-loader，css-loader                  |
+>| less  | style-loader，css-loader，less-loader      |
+>| sass  | style-loader，css-loader，scss-loader      |
+>| 图片    | url-loader?limit=7421&name=[name].[ext]  |
+>| Vue   | vue-loader，vue-template-compiler         |
+>| babel | 一、babel-core, babel-loader,babel-plugin-transform-runtime |
+>| babel | 二、babel-preset-env,babel-preset-stage-0  |
 >
+
+#### 7. babel webpack 安装和配置
+
+>1. 安装俩套包：
 >
+>   - babel-core, babel-loader,babel-plugin-transform-runtime
+>   - babel-preset-env,babel-preset-stage-0
+>
+>2. 增加 webpack.config.js配置
+>
+>   ```js
+>   module:{
+>           rules:[
+>               { test:/.vue$/,use:'vue-loader' },
+>               { test:/.css$/,use:['style-loader','css-loader']},
+>               { test:/.js$/,use:'babel-loader',exclude:/node_modules/ }
+>           ]
+>       }
+>   ```
+>
+>3. 项目根目录增加.babelrc文件
+>
+>   ```json
+>   {
+>       "presets": ["env", "stage-0"],
+>       "plugins": ["transform-runtime"]
+>   }
+>   ```
 
 
 
