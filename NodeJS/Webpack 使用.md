@@ -169,7 +169,7 @@
 >| ----- | ---------------------------------------- |
 >| css   | style-loader，css-loader                  |
 >| less  | style-loader，css-loader，less-loader      |
->| sass  | style-loader，css-loader，scss-loader      |
+>| sass  | style-loader，css-loader，sass-loader      |
 >| 图片    | url-loader?limit=7421&name=[name].[ext]  |
 >| Vue   | vue-loader，vue-template-compiler         |
 >| babel | 一、babel-core, babel-loader,babel-plugin-transform-runtime |
