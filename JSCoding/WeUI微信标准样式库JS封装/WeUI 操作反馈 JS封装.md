@@ -7,6 +7,8 @@
 > 2.使用前需要引用微信的CDN CSS：https://res.wx.qq.com/open/libs/weui/0.4.3/weui.min.css
 >
 > 3.引用公共JS Public.js
+>
+> 4.wxpb.js  更全面的jssdk 增加了自定义分享
 
 
 
@@ -70,4 +72,48 @@
 > | msg  | 提示语  | alert 提示语 |
 
 
+
+### 二 、自定义分享使用
+
+>页面引用：
+>
+>https://res.wx.qq.com/open/libs/weui/0.4.3/weui.min.css
+>
+>https://res.wx.qq.com/open/js/jweixin-1.4.0.js
+>
+>jquery
+
+
+
+>使用方法
+>
+>```javascript
+>// 初始化 分享标题
+>                wxpb.option.title = '测试分享'
+>                // 初始化 分享描述
+>                wxpb.option.desc = '测试描述'
+>                // 初始化 分享落地页链接
+>                wxpb.option.link = location.href
+>                // 初始化 图片
+>                wxpb.option.imgUrl = 'http://ccg.api.socialhubplus.com/Images/smallclass/share.png'
+>                // 初始化操作 功能
+>                wxpb.jsApiList = ['checkJsApi',
+>                    'chooseImage',
+>                    'previewImage',
+>                    'uploadImage', 'previewImage', 'updateAppMessageShareData', 'updateTimelineShareData', 'onMenuShareTimeline', 'onMenuShareAppMessage', 'showOptionMenu', , 'hideMenuItems'];
+>                // 初始化 隐藏按钮
+>                wxpb.hideList = ["menuItem:editTag", "menuItem:delete", "menuItem:copyUrl", "menuItem:openWithQQBrowser", "menuItem:openWithSafari", "menuItem:share:email"]
+>                // 调用 JSSDK 初始化方法
+>                wxpb.init();
+>
+>                // 特有方法
+>                wx.ready(function () {
+>                    wx.getLocation({
+>                        type: 'wgs84',
+>                        success: function (res) {
+>                            document.getElementById("address").value = res.longitude + '/' + res.latitude;
+>                        }
+>                    });
+>                })
+>```
 
