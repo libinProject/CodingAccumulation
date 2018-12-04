@@ -20,12 +20,12 @@ var wxpb = {
         'previewImage',
         'uploadImage', 'previewImage', 'updateAppMessageShareData', 'updateTimelineShareData', 'onMenuShareTimeline', 'onMenuShareAppMessage', 'showOptionMenu', , 'hideMenuItems'],
     hideList: ["menuItem:editTag", "menuItem:delete", "menuItem:copyUrl", "menuItem:openWithQQBrowser", "menuItem:openWithSafari", "menuItem:share:email"],
-    init() {
+    init:function() {
         var param = {
             url: escape(location.href)
         }
         $.ajax({
-            url: './GetWxConfig',
+            url: '../WeChat/GetWxConfig',
             type: "post",
             contentType: "application/json",
             data: JSON.stringify(param),
@@ -49,7 +49,7 @@ var wxpb = {
         })
         wxpb.wxShare();
     },
-    checkAndroid() {
+    checkAndroid:function() {
         var u = navigator.userAgent;
         var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
         var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
@@ -59,7 +59,7 @@ var wxpb = {
             return 'isiOS'
         }
     },
-    wxShare() {
+    wxShare:function() {
         wx.ready(function () {
             wx.showOptionMenu();
             wx.hideMenuItems({
@@ -143,14 +143,14 @@ var wxpb = {
         if (!this.dialogAlert) {
             this.dialogAlert = document.createElement('div');
             this.dialogAlert.className = 'weui_dialog_confirm';
-            this.dialogAlert.innerHTML = `<div class="weui_mask"></div>
-							            <div class="weui_dialog">
-							            	<div class="weui_dialog_hd"><strong class="weui_dialog_title">温馨提示</strong></div>
-							                <div class="weui_dialog_bd alert-content">弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内</div>
-							                <div class="weui_dialog_ft">
-							                    <a href="javascript:;" class="weui_btn_dialog primary">知道了</a>
-							                </div>
-							            </div>`;
+            this.dialogAlert.innerHTML = '<div class="weui_mask"></div>\
+							            <div class="weui_dialog">\
+							            	<div class="weui_dialog_hd"><strong class="weui_dialog_title">温馨提示</strong></div>\
+							                <div class="weui_dialog_bd alert-content">弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内</div>\
+							                <div class="weui_dialog_ft">\
+							                    <a href="javascript:;" class="weui_btn_dialog primary">知道了</a>\
+							                </div>\
+							            </div>';
             this.append(this.dialogAlert);
             this.dialogAlert.addEventListener('click', function (e) {
                 var target = e.target;
@@ -167,14 +167,14 @@ var wxpb = {
         if (!this.dialogAlert) {
             this.dialogAlert = document.createElement('div');
             this.dialogAlert.className = 'weui_dialog_confirm';
-            this.dialogAlert.innerHTML = `<div class="weui_mask"></div>
-							            <div class="weui_dialog">
-							            	<div class="weui_dialog_hd"><strong class="weui_dialog_title">温馨提示</strong></div>
-							                <div class="weui_dialog_bd alert-content">弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内</div>
-							                <div class="weui_dialog_ft">
-							                    <a href="javascript:;" class="weui_btn_dialog primary">知道了</a>
-							                </div>
-							            </div>`;
+            this.dialogAlert.innerHTML = '<div class="weui_mask"></div>\
+							            <div class="weui_dialog">\
+							            	<div class="weui_dialog_hd"><strong class="weui_dialog_title">温馨提示</strong></div>\
+							                <div class="weui_dialog_bd alert-content">弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内</div>\
+							                <div class="weui_dialog_ft">\
+							                    <a href="javascript:;" class="weui_btn_dialog primary">知道了</a>\
+							                </div>\
+							            </div>';
             this.append(this.dialogAlert);
             this.dialogAlert.addEventListener('click', function (e) {
                 var target = e.target;
